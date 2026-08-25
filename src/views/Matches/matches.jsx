@@ -118,6 +118,25 @@ const Matches = () => {
 
                   </div>
 
+                  <p className="mt-3 mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                    Skills they wanted
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+
+                    {user.wantedSkills.map((skill) => (
+
+                      <span
+                        key={skill.name}
+                        className="rounded-full bg-[#E6F0EB] px-3 py-1 text-xs text-[#1F6F5C]"
+                      >
+                        {skill.name}
+                      </span>
+
+                    ))}
+
+                  </div>
+
                 </div>
 
 

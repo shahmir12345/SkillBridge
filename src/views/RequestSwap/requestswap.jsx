@@ -17,15 +17,19 @@ const RequestSwap = () => {
   // Validation error
   const [error, setError] = useState("")
 
+
   if (!user) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#F7F8F5]">
+
         <h2 className="text-xl font-semibold text-[#16241F]">
           User not found
         </h2>
+
       </div>
     )
   }
+
 
   const handleSubmit = (e) => {
 
@@ -36,6 +40,7 @@ const RequestSwap = () => {
       setError("Please complete all fields before sending the request.")
       return
     }
+
 
     // Request object
     const newRequest = {
@@ -52,9 +57,11 @@ const RequestSwap = () => {
       }),
     }
 
+
     // Get existing requests
     const existingRequests =
       JSON.parse(localStorage.getItem("swapRequests")) || []
+
 
     // Add new request
     const updatedRequests = [
@@ -62,42 +69,55 @@ const RequestSwap = () => {
       newRequest,
     ]
 
+
     // Save requests
     localStorage.setItem(
       "swapRequests",
       JSON.stringify(updatedRequests)
     )
 
+
     // Clear error
     setError("")
 
+
+    // Find users who match both skills
     const relevantMatches = users.filter((person) => {
 
+      // Don't match the selected user with themselves
       if (person.id === user.id) {
         return false
       }
-    
+
+
+      // Does this person want the skill we are offering?
       const wantsYourSkill = person.wantedSkills.some(
         (skill) =>
           skill.name.toLowerCase() === youOffer.toLowerCase()
       )
-    
+
+
+      // Does this person offer the skill we want to learn?
       const offersTheirSkill = person.offeredSkills.some(
         (skill) =>
           skill.name.toLowerCase() === theyOffer.toLowerCase()
       )
-    
+
+
       return wantsYourSkill && offersTheirSkill
     })
 
+
+    // Save matches
     localStorage.setItem(
       "currentMatches",
       JSON.stringify(relevantMatches)
     )
 
-    navigate('/matches')
 
+    navigate("/matches")
   }
+
 
   return (
     <div className="min-h-screen bg-[#F7F8F5] px-6 py-10">
@@ -128,6 +148,7 @@ const RequestSwap = () => {
               {user.name.charAt(0)}
             </div>
 
+
             {/* User Info */}
             <div className="flex-1">
 
@@ -140,6 +161,7 @@ const RequestSwap = () => {
               </p>
 
             </div>
+
 
             {/* Rating */}
             <div className="flex items-center gap-1 rounded-full bg-[#FFF3CD] px-3 py-1.5">
@@ -179,20 +201,35 @@ const RequestSwap = () => {
                 htmlFor="youOffer"
                 className="mb-2 block text-sm font-medium text-[#16241F]"
               >
-                You offer
+                Teaches
               </label>
 
-              <input
+
+              <select
                 id="youOffer"
-                type="text"
                 value={youOffer}
                 onChange={(e) => {
                   setYouOffer(e.target.value)
                   setError("")
                 }}
-                placeholder="What can you offer?"
                 className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-[#1F6F5C] focus:ring-1 focus:ring-[#1F6F5C]"
-              />
+              >
+
+                <option value="" disabled hidden>
+                  Select a skill you want to learn
+                </option>
+
+
+                {user.offeredSkills.map((skill) => (
+                  <option
+                    key={skill.name}
+                    value={skill.name}
+                  >
+                    {skill.name}
+                  </option>
+                ))}
+
+              </select>
 
             </div>
 
@@ -204,8 +241,9 @@ const RequestSwap = () => {
                 htmlFor="theyOffer"
                 className="mb-2 block text-sm font-medium text-[#16241F]"
               >
-                They offer
+                Wants
               </label>
+
 
               <select
                 id="theyOffer"
@@ -217,12 +255,16 @@ const RequestSwap = () => {
                 className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-[#1F6F5C] focus:ring-1 focus:ring-[#1F6F5C]"
               >
 
-                <option value="">
-                  Select a skill you want to learn
+                <option value="" disabled hidden>
+                  Select a skill you can offer                
                 </option>
 
-                {user.offeredSkills.map((skill) => (
-                  <option key={skill.name} value={skill.name}>
+
+                {user.wantedSkills.map((skill) => (
+                  <option
+                    key={skill.name}
+                    value={skill.name}
+                  >
                     {skill.name}
                   </option>
                 ))}
@@ -241,6 +283,7 @@ const RequestSwap = () => {
               >
                 Message
               </label>
+
 
               <textarea
                 id="message"

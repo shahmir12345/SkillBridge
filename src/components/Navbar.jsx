@@ -15,7 +15,7 @@ const Navbar = () => {
           to="/"
           className="text-xl font-bold text-gray-900"
         >
-          SkillSwap
+          SkillBridge
         </Link>
 
 
