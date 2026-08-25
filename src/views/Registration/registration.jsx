@@ -54,8 +54,7 @@ const Registration = () => {
 
 
     // Email validation
-    const emailPattern =
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
     if (!emailPattern.test(cleanEmail)) {
       setError("Please enter a valid email address.")
@@ -86,8 +85,7 @@ const Registration = () => {
 
     // ================= GET EXISTING USERS =================
 
-    const existingUsers =
-      JSON.parse(localStorage.getItem("registeredUsers")) || []
+    const existingUsers = JSON.parse(localStorage.getItem("registeredUsers")) || []
 
 
     // ================= DUPLICATE EMAIL CHECK =================
@@ -152,63 +150,63 @@ const Registration = () => {
 
       <div className="flex min-h-screen flex-col lg:flex-row">
 
-{/* ================= LEFT SIDE ================= */}
+        {/* ================= LEFT SIDE ================= */}
 
-<div className="relative flex min-h-[420px] w-full items-center justify-center overflow-hidden bg-[#1F6F5C] px-8 py-14 text-white sm:px-12 lg:min-h-screen lg:w-1/2 lg:px-16">
+        <div className="relative flex min-h-[420px] w-full items-center justify-center overflow-hidden bg-[#1F6F5C] px-8 py-14 text-white sm:px-12 lg:min-h-screen lg:w-1/2 lg:px-16">
 
-  {/* Decorative circles */}
+        {/* Decorative circles */}
 
-  <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-white/5" />
+        <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-white/5" />
 
-  <div className="absolute -bottom-28 -left-28 h-96 w-96 rounded-full bg-white/5" />
+        <div className="absolute -bottom-28 -left-28 h-96 w-96 rounded-full bg-white/5" />
 
-  <div className="relative z-10 flex max-w-xl flex-col items-center text-center">
+        <div className="relative z-10 flex max-w-xl flex-col items-center text-center">
 
-    {/* Logo Placeholder */}
+            {/* Logo Placeholder */}
 
-    <div className="mb-8 flex h-32 w-32 items-center justify-center rounded-3xl border border-white/30 bg-white/10 text-base font-semibold tracking-wide backdrop-blur-sm sm:h-36 sm:w-36">
-      LOGO
-    </div>
-
-
-    {/* Website Name */}
-
-    <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
-      SkillSwap
-    </h1>
+            <div className="mb-8 flex h-32 w-32 items-center justify-center rounded-3xl border border-white/30 bg-white/10 text-base font-semibold tracking-wide backdrop-blur-sm sm:h-36 sm:w-36">
+            LOGO
+            </div>
 
 
-    {/* Small Divider */}
+            {/* Website Name */}
 
-    <div className="my-6 h-1 w-16 rounded-full bg-white/60" />
-
-
-    {/* Description */}
-
-    <p className="max-w-md text-sm leading-7 text-white/80 sm:text-base">
-      Exchange your skills, learn from others, and grow together.
-      Connect with people who can teach what you want to learn while
-      sharing what you already know.
-    </p>
+            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
+            SkillSwap
+            </h1>
 
 
-    {/* Feature */}
+            {/* Small Divider */}
 
-    <div className="mt-10 flex items-center gap-3 rounded-full border border-white/10 bg-white/10 px-5 py-3 backdrop-blur-sm">
+            <div className="my-6 h-1 w-16 rounded-full bg-white/60" />
 
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-sm">
-        ✓
-      </div>
 
-      <p className="text-sm font-medium text-white/90">
-        Learn. Share. Grow together.
-      </p>
+            {/* Description */}
 
-    </div>
+            <p className="max-w-md text-sm leading-7 text-white/80 sm:text-base">
+            Exchange your skills, learn from others, and grow together.
+            Connect with people who can teach what you want to learn while
+            sharing what you already know.
+            </p>
 
-  </div>
 
-</div>
+            {/* Feature */}
+
+            <div className="mt-10 flex items-center gap-3 rounded-full border border-white/10 bg-white/10 px-5 py-3 backdrop-blur-sm">
+
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-sm">
+                ✓
+            </div>
+
+            <p className="text-sm font-medium text-white/90">
+                Learn. Share. Grow together.
+            </p>
+
+            </div>
+
+        </div>
+
+        </div>
 
 
         {/* ================= RIGHT SIDE ================= */}
