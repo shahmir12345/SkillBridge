@@ -59,33 +59,32 @@ const Login = () => {
       {/* Login Container */}
       <div className="w-full max-w-md">
 
+        {/* Login Card */}
+        <div className="rounded-3xl border border-[#D8E3DD] bg-[#2b4e41] p-6 shadow-xl sm:p-8">
+        
         {/* Logo Section */}
         <div className="mb-6 text-center">
 
-          {/* Logo */}
-          <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-[#1F6F5C] shadow-lg sm:h-24 sm:w-24">
+            {/* Logo */}
+            <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-[#1F6F5C] shadow-lg sm:h-24 sm:w-24">
 
-            <span className="text-4xl font-bold text-white sm:text-5xl">
-              S
-            </span>
+                <span className="text-4xl font-bold text-white sm:text-5xl">
+                S
+                </span>
 
-          </div>
+            </div>
 
 
-          {/* Website Name */}
-          <h1 className="text-3xl font-bold tracking-tight text-[#59d2a8] sm:text-4xl">
+            {/* Website Name */}
+            <h1 className="text-3xl font-bold tracking-tight text-[#59d2a8] sm:text-4xl">
             SkillBridge
-          </h1>
+            </h1>
 
-          <p className="mt-2 text-sm font-medium text-[#1F6F5C]">
+            <p className="mt-2 text-sm font-medium text-[#1F6F5C]">
             Learn. Share. Grow.
-          </p>
+            </p>
 
-        </div>
-
-
-        {/* Login Card */}
-        <div className="rounded-3xl border border-[#D8E3DD] bg-[#2b4e41] p-6 shadow-xl sm:p-8">
+            </div>
 
           {/* Heading */}
           <div className="mb-7 text-center">
