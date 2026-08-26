@@ -50,7 +50,7 @@ const Login = () => {
     )
 
     // Go to Home
-    navigate("/")
+    navigate("/home")
   }
 
 
