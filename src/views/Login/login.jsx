@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import logo from "./logo.png";
 
 const Login = () => {
 
@@ -66,25 +67,12 @@ const Login = () => {
         <div className="mb-6 text-center">
 
             {/* Logo */}
-            <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-[#1F6F5C] shadow-lg sm:h-24 sm:w-24">
+            <div className="mx-auto mb-5 flex h-26 w-35 items-center justify-center rounded-2xl sm:h-42  sm:w-57">
 
-                <span className="text-4xl font-bold text-white sm:text-5xl">
-                S
-                </span>
+            <img src={logo} alt="SkillBridge Logo" className="h-full w-full object-cover"/>
 
             </div>
-
-
-            {/* Website Name */}
-            <h1 className="text-3xl font-bold tracking-tight text-[#59d2a8] sm:text-4xl">
-            SkillBridge
-            </h1>
-
-            <p className="mt-2 text-sm font-medium text-[#1F6F5C]">
-            Learn. Share. Grow.
-            </p>
-
-            </div>
+        </div>
 
           {/* Heading */}
           <div className="mb-7 text-center">
@@ -130,7 +118,7 @@ const Login = () => {
                   setError("")
                 }}
                 placeholder="Enter your email"
-                className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-[#16241F] outline-none transition placeholder:text-gray-400 focus:border-[#1F6F5C] focus:ring-2 focus:ring-[#1F6F5C]/20"
+                className="w-full rounded-xl border border-gray-300 bg-[#cbddd5] px-4 py-3 text-sm text-[#16241F] outline-none transition placeholder:text-gray-600 focus:border-[#1F6F5C] focus:ring-2 focus:ring-[#1F6F5C]/20"
               />
 
             </div>
@@ -155,7 +143,7 @@ const Login = () => {
                   setError("")
                 }}
                 placeholder="Enter your password"
-                className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-[#16241F] outline-none transition placeholder:text-gray-400 focus:border-[#1F6F5C] focus:ring-2 focus:ring-[#1F6F5C]/20"
+                className="w-full rounded-xl border border-gray-300 bg-[#cbddd5] px-4 py-3 text-sm text-[#16241F] outline-none transition placeholder:text-gray-600 focus:border-[#1F6F5C] focus:ring-2 focus:ring-[#1F6F5C]/20"
               />
 
             </div>

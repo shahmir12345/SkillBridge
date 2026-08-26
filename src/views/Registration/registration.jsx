@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import logo from "./logo.png"
 
 const Registration = () => {
 
@@ -164,21 +165,14 @@ const Registration = () => {
 
             {/* Logo Placeholder */}
 
-            <div className="mb-8 flex h-32 w-32 items-center justify-center rounded-3xl border border-white/30 bg-white/10 text-base font-semibold tracking-wide backdrop-blur-sm sm:h-36 sm:w-36">
-            LOGO
+            <div className="mb-8 flex h-40 w-40 items-center justify-center rounded-3xl text-base font-semibold tracking-wide backdrop-blur-sm sm:h-66 sm:w-100">
+              <img src={logo} alt="SkillBridge Logo" className="h-full w-full object-cover"/>
             </div>
-
-
-            {/* Website Name */}
-
-            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
-            SkillSwap
-            </h1>
 
 
             {/* Small Divider */}
 
-            <div className="my-6 h-1 w-16 rounded-full bg-white/60" />
+            <div className="mb-3 h-1 w-16 rounded-full bg-white/60" />
 
 
             {/* Description */}
