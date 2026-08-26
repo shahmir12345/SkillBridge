@@ -12,7 +12,7 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link
-          to="/"
+          to="/home"
           className="text-xl font-bold text-gray-900"
         >
           SkillBridge
@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="mx-auto hidden items-center gap-8 md:flex">
 
           <Link
-            to="/"
+            to="/home"
             className="text-sm font-medium text-gray-700 hover:text-gray-900"
           >
             Home
@@ -59,6 +59,14 @@ const Navbar = () => {
           className="hidden rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-800 hover:scale-102 md:block"
         >
           Browse Skills
+        </Link>
+
+        {/* Desktop Browse Skills Button */}
+        <Link
+          to="/login"
+          className="ml-3 hidden rounded-lg bg-red-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-800 hover:scale-102 md:block"
+        >
+          Sign Out
         </Link>
 
 
@@ -120,6 +128,14 @@ const Navbar = () => {
               className="w-fit rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-800"
             >
               Browse Skills
+            </Link>
+
+            <Link
+              to="/login"
+              onClick={() => setMenuOpen(false)}
+              className="w-fit rounded-lg bg-red-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-800"
+            >
+              Sign Out
             </Link>
 
           </div>
