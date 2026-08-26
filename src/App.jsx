@@ -15,6 +15,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom"
+import Login from "./views/Login/login"
 
 
 const AppContent = () => {
@@ -44,6 +45,8 @@ const AppContent = () => {
         <Route path="/matches" element={<Matches />}/>
 
         <Route path="/register" element={<Registration />}/>
+
+        <Route path="/login" element={<Login/>}/>
 
       </Routes>
     </>
