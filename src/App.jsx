@@ -9,6 +9,8 @@ import MySwaps from "./views/MySwaps/myswaps"
 import Matches from "./views/Matches/matches"
 import Registration from "./views/Registration/registration"
 
+import { AuthProvider } from './controllers/authcontext'
+
 import {
   BrowserRouter,
   Routes,
@@ -24,7 +26,8 @@ const AppContent = () => {
 
   const hideNavbar =
     location.pathname === "/register" ||
-    location.pathname === "/login"
+    location.pathname === "/login"    ||
+    location.pathname === "/"
 
   return (
     <>
@@ -32,7 +35,9 @@ const AppContent = () => {
 
       <Routes>
 
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Registration />} />
+
+        <Route path="/home" element={<Home />} />
 
         <Route path="/browse" element={<Browse />} />
 
@@ -57,9 +62,11 @@ const AppContent = () => {
 const App = () => {
 
   return (
+  <AuthProvider>  
     <BrowserRouter>
       <AppContent />
     </BrowserRouter>
+  </AuthProvider>  
   )
 }
 
