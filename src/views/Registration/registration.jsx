@@ -165,7 +165,7 @@ const Registration = () => {
 
             {/* Logo Placeholder */}
 
-            <div className="mb-8 flex h-40 w-40 items-center justify-center rounded-3xl text-base font-semibold tracking-wide backdrop-blur-sm sm:h-66 sm:w-100">
+            <div className="mb-8 flex h-50 w-50 items-center justify-center rounded-3xl text-base font-semibold tracking-wide backdrop-blur-sm sm:h-66 sm:w-100">
               <img src={logo} alt="SkillBridge Logo" className="h-full w-full object-cover"/>
             </div>
 
