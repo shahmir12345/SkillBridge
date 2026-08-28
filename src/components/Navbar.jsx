@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import logo from "./logo.png";
 
 const Navbar = () => {
 
@@ -8,14 +9,16 @@ const Navbar = () => {
   return (
     <nav className="w-full border-b border-gray-200 bg-white">
 
-      <div className="mx-auto flex h-16 max-w-7xl items-center px-6">
+      <div className="mx-auto flex h-26 max-w-7xl items-center px-6">
 
         {/* Logo */}
         <Link
           to="/home"
           className="text-xl font-bold text-gray-900"
         >
-          SkillBridge
+          <div className="h-26 w-35 sm:h-26 sm:w-40">
+            <img src={logo} alt="SkillBridge Logo" className="h-full w-full object-cover"/>
+          </div>
         </Link>
 
 
@@ -24,28 +27,28 @@ const Navbar = () => {
 
           <Link
             to="/home"
-            className="text-sm font-medium text-gray-700 hover:text-gray-900"
+            className="text-sm sm:text-base  font-medium text-gray-700 hover:text-gray-900"
           >
             Home
           </Link>
 
           <Link
             to="/browse"
-            className="text-sm font-medium text-gray-700 hover:text-gray-900"
+            className="text-sm sm:text-base font-medium text-gray-700 hover:text-gray-900"
           >
             Browse
           </Link>
 
           <Link
             to="/matches"
-            className="text-sm font-medium text-gray-700 hover:text-gray-900"
+            className="text-sm sm:text-base font-medium text-gray-700 hover:text-gray-900"
           >
             Matches
           </Link>
 
           <Link
             to="/myswaps"
-            className="text-sm font-medium text-gray-700 hover:text-gray-900"
+            className="text-sm sm:text-base font-medium text-gray-700 hover:text-gray-900"
           >
             My Swaps
           </Link>
