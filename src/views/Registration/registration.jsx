@@ -186,7 +186,7 @@ const Registration = () => {
 
             {/* Description */}
 
-            <p className="max-w-md text-sm leading-7 text-white/80 sm:text-base">
+            <p className="w-full max-w-[340px] px-2 text-center text-sm leading-7 text-white/80 sm:max-w-sm sm:px-0 sm:text-base">
             Exchange your skills, learn from others, and grow together.
             Connect with people who can teach what you want to learn while
             sharing what you already know.
