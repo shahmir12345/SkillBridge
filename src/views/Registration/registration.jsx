@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import logo from "./logo.png"
 
 const Registration = () => {
@@ -43,6 +44,7 @@ const Registration = () => {
       !cleanContact
     ) {
       setError("Please complete all fields.")
+      toast.error("Please complete all fields.")
       return
     }
 
@@ -50,6 +52,7 @@ const Registration = () => {
     // Name validation
     if (cleanName.length < 3) {
       setError("Name must contain at least 3 characters.")
+      toast.error("Name must contain at least 3 characters.")
       return
     }
 
@@ -59,6 +62,7 @@ const Registration = () => {
 
     if (!emailPattern.test(cleanEmail)) {
       setError("Please enter a valid email address.")
+      toast.error("Please enter a valid email address.")
       return
     }
 
@@ -66,6 +70,7 @@ const Registration = () => {
     // Password validation
     if (password.length < 6) {
       setError("Password must contain at least 6 characters.")
+      toast.error("Password must contain at least 6 characters.")
       return
     }
 
@@ -73,6 +78,7 @@ const Registration = () => {
     // Confirm password
     if (password !== confirmPassword) {
       setError("Passwords do not match.")
+      toast.error("Passwords do not match.")
       return
     }
 
@@ -80,6 +86,7 @@ const Registration = () => {
     // Contact validation
     if (!/^\d{11}$/.test(cleanContact)) {
       setError("Contact number must contain exactly 11 digits.")
+      toast.error("Contact number must contain exactly 11 digits.")
       return
     }
 
@@ -97,6 +104,7 @@ const Registration = () => {
 
     if (emailExists) {
       setError("An account with this email already exists.")
+      toast.error("An account with this email already exists.")
       return
     }
 
@@ -129,6 +137,7 @@ const Registration = () => {
     // ================= SUCCESS =================
 
     setSuccess("Account created successfully!")
+    toast.success("Account created successfully!")
 
 
     // Clear form
@@ -165,7 +174,7 @@ const Registration = () => {
 
             {/* Logo Placeholder */}
 
-            <div className="mb-8 flex h-50 w-50 items-center justify-center rounded-3xl text-base font-semibold tracking-wide backdrop-blur-sm sm:h-66 sm:w-100">
+            <div className="mb-8 flex h-100 w-100 items-center justify-center rounded-3xl text-base font-semibold tracking-wide backdrop-blur-sm sm:h-66 sm:w-100">
               <img src={logo} alt="SkillBridge Logo" className="h-full w-full object-cover"/>
             </div>
 

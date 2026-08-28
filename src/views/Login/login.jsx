@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import logo from "./logo.png";
 
 const Login = () => {
@@ -40,6 +41,7 @@ const Login = () => {
     // Invalid credentials
     if (!user) {
       setError("Invalid email or password.")
+      toast.error("Invalid email or password.")
       return
     }
 
@@ -49,8 +51,13 @@ const Login = () => {
       JSON.stringify(user)
     )
 
-    // Go to Home
-    navigate("/home")
+    // Show success toast
+    toast.success("Successfully logged in!")
+
+    // Go to Home (slight delay so the toast is visible)
+    setTimeout(() => {
+      navigate("/home")
+    }, 2000)
   }
 
 

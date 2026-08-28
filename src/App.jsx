@@ -19,6 +19,9 @@ import {
 } from "react-router-dom"
 import Login from "./views/Login/login"
 
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
 
 const AppContent = () => {
 
@@ -65,6 +68,11 @@ const App = () => {
   <AuthProvider>  
     <BrowserRouter>
       <AppContent />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        theme="colored"
+      />
     </BrowserRouter>
   </AuthProvider>  
   )
