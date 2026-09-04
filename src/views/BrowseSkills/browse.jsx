@@ -1,13 +1,17 @@
 import React, { useState } from "react"
 import { users } from "../../models/userModel"
-import {skillCategories,skillLevels,sortOptions,} from "../../models/skillModel"
+import {
+  skillCategories,
+  skillLevels,
+  sortOptions,
+} from "../../models/skillModel"
 import { useNavigate } from "react-router-dom"
 
 const Browse = () => {
 
   const navigate = useNavigate()
 
-  // Search input ki value
+  // Search input
   const [search, setSearch] = useState("")
 
   // Selected category
@@ -19,58 +23,79 @@ const Browse = () => {
   // Selected sorting option
   const [sortBy, setSortBy] = useState("Newest")
 
+
+  // ================= FILTER USERS =================
+
   const filteredUsers = users.filter((user) => {
+
     const matchesSearch =
       user.name.toLowerCase().includes(search.toLowerCase()) ||
       user.offeredSkills.some((skill) =>
         skill.name.toLowerCase().includes(search.toLowerCase())
       )
-  
+
     const matchesCategory =
       category === "All" ||
       user.offeredSkills.some(
         (skill) => skill.category === category
       )
-  
+
     const matchesLevel =
       level === "All" ||
       user.offeredSkills.some(
         (skill) => skill.level === level
       )
-  
+
     return matchesSearch && matchesCategory && matchesLevel
   })
 
+
+  // ================= SORT USERS =================
+
   const sortedUsers = [...filteredUsers].sort((a, b) => {
+
     if (sortBy === "A-Z") {
       return a.name.localeCompare(b.name)
     }
-  
+
     if (sortBy === "Ratings") {
       return b.rating - a.rating
     }
-  
+
     return b.id - a.id
   })
 
 
   return (
-    <main className="min-h-screen bg-[#F2F4EC] text-[#16241F]">
 
-      {/* ==================== Header ==================== */}
-      <section className="border-b border-[#D9DFD3] bg-[#F2F4EC] px-8 py-12 md:px-12">
+    <main className="min-h-screen bg-[#e2e0e0] text-[#16241F]">
 
-        <div className="mx-auto max-w-7xl">
+      {/* =====================================================
+          HEADER
+      ===================================================== */}
 
-          <p className="mb-2 font-mono text-xs uppercase tracking-wider text-[#1F6F5C]">
+      <section className="relative overflow-hidden bg-[#153F35] text-white">
+
+        {/* Decorative circles */}
+
+        <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#1F6F5C]/40" />
+
+        <div className="absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-[#1F6F5C]/30" />
+
+        <div className="absolute right-[25%] top-10 h-20 w-20 rounded-full bg-[#E2982F]/10" />
+
+
+        <div className="relative mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16 md:px-12">
+
+          <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[#8FD0BC]">
             Explore the community
           </p>
 
-          <h1 className="mb-3 font-serif text-[40px] font-semibold leading-tight">
+          <h1 className="font-serif text-4xl font-semibold leading-tight sm:text-5xl">
             Browse Skills
           </h1>
 
-          <p className="max-w-xl text-[15px] leading-6 text-[#5C6B60]">
+          <p className="mt-4 max-w-xl text-sm leading-7 text-white/70 sm:text-base">
             Find people who can teach you a skill and discover what you
             can offer in return.
           </p>
@@ -80,105 +105,129 @@ const Browse = () => {
       </section>
 
 
-      {/* ==================== Filters ==================== */}
-      <section className="px-8 py-7 md:px-12">
+      {/* =====================================================
+          FILTERS
+      ===================================================== */}
+
+      <section className="px-5 py-8 sm:px-8 md:px-12">
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+          <div className="mb-5">
 
-            {/* Search */}
-            <div className="md:col-span-1">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#1F6F5C]">
+              Find your match
+            </p>
 
-              <label className="mb-2 block text-xs font-semibold text-[#435149]">
-                Search
-              </label>
+            <h2 className="mt-1 font-serif text-xl font-semibold sm:text-2xl">
+              Search & Filter
+            </h2>
 
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search skills..."
-                className="w-full rounded-lg border border-[#CBD4C8] bg-white px-3.5 py-2.5 text-sm outline-none transition placeholder:text-[#89948C] focus:border-[#1F6F5C]"
-              />
-
-            </div>
+          </div>
 
 
-            {/* Category */}
-            <div>
+          <div className="rounded-2xl border border-[#D9DFD3] bg-white p-5 shadow-sm sm:p-6">
 
-              <label className="mb-2 block text-xs font-semibold text-[#435149]">
-                Category
-              </label>
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full rounded-lg border border-[#CBD4C8] bg-white px-3.5 py-2.5 text-sm outline-none focus:border-[#1F6F5C]"
-              >
+              {/* Search */}
 
-                <option value="All">All</option>
+              <div>
 
-                {skillCategories
-                  .filter((item) => item !== "All")
-                  .map((item) => (
+                <label className="mb-2 block text-xs font-semibold text-[#435149]">
+                  Search
+                </label>
+
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search skills..."
+                  className="w-full rounded-xl border border-[#CBD4C8] bg-[#F7F8F5] px-4 py-3 text-sm text-[#16241F] outline-none transition placeholder:text-[#89948C] focus:border-[#1F6F5C] focus:bg-white focus:ring-2 focus:ring-[#1F6F5C]/10"
+                />
+
+              </div>
+
+
+              {/* Category */}
+
+              <div>
+
+                <label className="mb-2 block text-xs font-semibold text-[#435149]">
+                  Category
+                </label>
+
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full rounded-xl border border-[#CBD4C8] bg-[#F7F8F5] px-4 py-3 text-sm text-[#16241F] outline-none transition focus:border-[#1F6F5C] focus:bg-white focus:ring-2 focus:ring-[#1F6F5C]/10"
+                >
+
+                  <option value="All">All Categories</option>
+
+                  {skillCategories
+                    .filter((item) => item !== "All")
+                    .map((item) => (
+                      <option key={item} value={item}>
+                        {item}
+                      </option>
+                    ))}
+
+                </select>
+
+              </div>
+
+
+              {/* Level */}
+
+              <div>
+
+                <label className="mb-2 block text-xs font-semibold text-[#435149]">
+                  Level
+                </label>
+
+                <select
+                  value={level}
+                  onChange={(e) => setLevel(e.target.value)}
+                  className="w-full rounded-xl border border-[#CBD4C8] bg-[#F7F8F5] px-4 py-3 text-sm text-[#16241F] outline-none transition focus:border-[#1F6F5C] focus:bg-white focus:ring-2 focus:ring-[#1F6F5C]/10"
+                >
+
+                  <option value="All">All Levels</option>
+
+                  {skillLevels.map((item) => (
                     <option key={item} value={item}>
                       {item}
                     </option>
                   ))}
 
-              </select>
+                </select>
 
-            </div>
-
-
-            {/* Level */}
-            <div>
-
-              <label className="mb-2 block text-xs font-semibold text-[#435149]">
-                Level
-              </label>
-
-              <select
-                value={level}
-                onChange={(e) => setLevel(e.target.value)}
-                className="w-full rounded-lg border border-[#CBD4C8] bg-white px-3.5 py-2.5 text-sm outline-none focus:border-[#1F6F5C]"
-              >
-
-                <option value="All">All</option>
-
-                {skillLevels.map((item) => (
-                  <option key={item} value={item}>
-                    {item}
-                  </option>
-                ))}
-
-              </select>
-
-            </div>
+              </div>
 
 
-            {/* Sort */}
-            <div>
+              {/* Sort */}
 
-              <label className="mb-2 block text-xs font-semibold text-[#435149]">
-                Sort
-              </label>
+              <div>
 
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="w-full rounded-lg border border-[#CBD4C8] bg-white px-3.5 py-2.5 text-sm outline-none focus:border-[#1F6F5C]"
-              >
+                <label className="mb-2 block text-xs font-semibold text-[#435149]">
+                  Sort By
+                </label>
 
-                {sortOptions.map((item) => (
-                  <option key={item} value={item}>
-                    {item}
-                  </option>
-                ))}
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="w-full rounded-xl border border-[#CBD4C8] bg-[#F7F8F5] px-4 py-3 text-sm text-[#16241F] outline-none transition focus:border-[#1F6F5C] focus:bg-white focus:ring-2 focus:ring-[#1F6F5C]/10"
+                >
 
-              </select>
+                  {sortOptions.map((item) => (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  ))}
+
+                </select>
+
+              </div>
 
             </div>
 
@@ -189,138 +238,189 @@ const Browse = () => {
       </section>
 
 
-      {/* ==================== Members ==================== */}
-      <section className="px-8 pb-16 md:px-12">
+      {/* =====================================================
+          MEMBERS
+      ===================================================== */}
+
+      <section className="px-5 pb-16 sm:px-8 md:px-12">
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="mb-5 flex items-center justify-between">
+          {/* Section heading */}
 
-            <h2 className="font-serif text-[22px] font-semibold">
-              Members
-            </h2>
+          <div className="mb-6 flex items-end justify-between">
 
-            <span className="font-mono text-xs text-[#6B776F]">
-              {users.length} members
+            <div>
+
+              <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[#1F6F5C]">
+                Community
+              </p>
+
+              <h2 className="font-serif text-2xl font-semibold">
+                Members
+              </h2>
+
+            </div>
+
+            <span className="rounded-full bg-[#E7F1EE] px-3 py-1.5 font-mono text-[11px] text-[#153F35]">
+              {filteredUsers.length} members
             </span>
 
           </div>
 
 
-          {/* Member Cards */}
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {/* No members */}
+
           {filteredUsers.length === 0 ? (
-            <div className="col-span-full py-12 text-center">
-                <p className="font-serif text-lg font-semibold">
-                No members found
-                </p>
 
-                <p className="mt-1 text-sm text-[#68756D]">
-                Try changing your search or filters.
-                </p>
-            </div>
-            ) : (
-            sortedUsers.map((user) => (
+            <div className="rounded-2xl border border-[#D9DFD3] bg-white px-5 py-14 text-center shadow-sm">
 
-              <div
-                key={user.id}
-                onClick={() => navigate(`/profile/${user.id}`)}
-                className="cursor-pointer rounded-[14px] border border-[#D9DFD3] bg-white p-5 transition hover:-translate-y-0.5 hover:shadow-sm"
-              >
-
-                {/* User */}
-                <div className="mb-4 flex items-center gap-3">
-
-                {/* Avatar */}
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#1F6F5C] font-serif text-base text-white">
-                     {user.name.charAt(0)}
-                </div>
-
-                {/* Name + Location */}
-                <div className="min-w-0 flex-1">
-
-                    <h3 className="text-sm font-semibold text-[#16241F]">
-                        {user.name}
-                    </h3>
-
-                    <p className="text-xs text-[#5C6B60]">
-                        {user.location}
-                    </p>
-
-                </div>
-
-                {/* Rating */}
-                <div className="flex shrink-0 items-center gap-1 rounded-full bg-[#FFF3CD] px-2.5 py-1">
-                    <span className="text-xs">★</span>
-
-                    <span className="text-xs font-semibold text-[#8A6416]">
-                        {user.rating}
-                    </span>
-                </div>
-
-                </div>
-
-
-                {/* Bio */}
-                <p className="mb-4 text-sm leading-5 text-[#5C6B60]">
-                  {user.bio}
-                </p>
-
-
-                {/* Offered Skills */}
-                <div className="mb-3">
-
-                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-[#68756D]">
-                    Offers
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-
-                    {user.offeredSkills.map((skill, index) => (
-
-                      <span
-                        key={index}
-                        className="rounded-full bg-[#E7F1EE] px-2.5 py-1 font-mono text-[11px] text-[#153F35]"
-                      >
-                        {skill.name}
-                      </span>
-
-                    ))}
-
-                  </div>
-
-                </div>
-
-
-                {/* Wanted Skills */}
-                <div>
-
-                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-[#68756D]">
-                    Wants
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-
-                    {user.wantedSkills.map((skill, index) => (
-
-                      <span
-                        key={index}
-                        className="rounded-full bg-[#FBE7C6] px-2.5 py-1 font-mono text-[11px] text-[#8A5C15]"
-                      >
-                        {skill.name}
-                      </span>
-
-                    ))}
-
-                  </div>
-
-                </div>
-
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#E7F1EE] text-2xl text-[#1F6F5C]">
+                ?
               </div>
 
-            )))}
+              <h3 className="mt-4 font-serif text-lg font-semibold">
+                No members found
+              </h3>
 
-          </div>
+              <p className="mt-2 text-sm text-[#68756D]">
+                Try changing your search or filters.
+              </p>
+
+            </div>
+
+          ) : (
+
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+              {sortedUsers.map((user) => (
+
+                <div
+                  key={user.id}
+                  onClick={() => navigate(`/profile/${user.id}`)}
+                  className="group cursor-pointer rounded-2xl border border-[#D9DFD3] bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-[#B8CEC5] hover:shadow-lg"
+                >
+
+                  {/* User */}
+
+                  <div className="mb-5 flex items-center gap-3">
+
+                    {/* Avatar */}
+
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#1F6F5C] font-serif text-lg text-white shadow-sm">
+                      {user.name.charAt(0)}
+                    </div>
+
+
+                    {/* Name */}
+
+                    <div className="min-w-0 flex-1">
+
+                      <h3 className="truncate text-sm font-semibold text-[#16241F]">
+                        {user.name}
+                      </h3>
+
+                      <p className="mt-0.5 truncate text-xs text-[#5C6B60]">
+                        {user.location}
+                      </p>
+
+                    </div>
+
+
+                    {/* Rating */}
+
+                    <div className="flex shrink-0 items-center gap-1 rounded-full bg-[#FBE7C6] px-2.5 py-1">
+
+                      <span className="text-xs text-[#E2982F]">
+                        ★
+                      </span>
+
+                      <span className="text-xs font-semibold text-[#8A5C15]">
+                        {user.rating}
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  {/* Divider */}
+
+                  <div className="mb-4 h-px bg-[#E7ECE5]" />
+
+
+                  {/* Bio */}
+
+                  <p className="mb-5 line-clamp-3 text-sm leading-6 text-[#5C6B60]">
+                    {user.bio}
+                  </p>
+
+
+                  {/* Offers */}
+
+                  <div className="mb-4">
+
+                    <p className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-[#7A867E]">
+                      Can teach
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+
+                      {user.offeredSkills.map((skill, index) => (
+
+                        <span
+                          key={index}
+                          className="rounded-full bg-[#E7F1EE] px-3 py-1.5 font-mono text-[11px] text-[#153F35]"
+                        >
+                          {skill.name}
+                        </span>
+
+                      ))}
+
+                    </div>
+
+                  </div>
+
+
+                  {/* Wants */}
+
+                  <div>
+
+                    <p className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-[#7A867E]">
+                      Wants to learn
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+
+                      {user.wantedSkills.map((skill, index) => (
+
+                        <span
+                          key={index}
+                          className="rounded-full bg-[#FBE7C6] px-3 py-1.5 font-mono text-[11px] text-[#8A5C15]"
+                        >
+                          {skill.name}
+                        </span>
+
+                      ))}
+
+                    </div>
+
+                  </div>
+
+
+                  {/* View profile hint */}
+
+                  <div className="mt-5 border-t border-[#E7ECE5] pt-4 text-xs font-semibold text-[#1F6F5C] opacity-0 transition group-hover:opacity-100">
+                    View profile →
+                  </div>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          )}
 
         </div>
 
