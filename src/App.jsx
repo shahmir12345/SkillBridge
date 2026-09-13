@@ -21,6 +21,7 @@ import Login from "./views/Login/login"
 
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import Chat from "./views/Chat/chat"
 
 
 const AppContent = () => {
@@ -47,6 +48,8 @@ const AppContent = () => {
         <Route path="/profile/:id" element={<UserProfile />}/>
 
         <Route path="/request/:id" element={<RequestSwap />}/>
+
+        <Route path="/chat/:id" element= {<Chat/>}/>
 
         <Route path="/myswaps" element={<MySwaps />}/>
 
