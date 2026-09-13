@@ -214,24 +214,24 @@ const Chat = () => {
                 </button>
             )}
 
-            <div
+                <div
               
                 className={`max-w-[80%] break-words sm:max-w-[65%] ${
                   msg.sender === "me"
                     ? "items-end"
                     : "items-start"
                 } flex flex-col`}
-              >
-
-                <div
-                  className={`max-w-full break-words whitespace-normal rounded-2xl px-4 py-3 text-sm leading-6 shadow-sm ${
-                    msg.sender === "me"
-                      ? "rounded-br-md bg-[#1F6F5C] text-white"
-                      : "rounded-bl-md border border-[#D9DFD3] bg-white text-[#16241F]"
-                  }`}
                 >
-                  {msg.text}
-                </div>
+
+                    <div
+                    className={`max-w-full break-words whitespace-normal rounded-2xl px-4 py-3 text-sm leading-6 shadow-sm ${
+                        msg.sender === "me"
+                        ? "rounded-br-md bg-[#1F6F5C] text-white"
+                        : "rounded-bl-md border border-[#D9DFD3] bg-white text-[#16241F]"
+                    }`}
+                    >
+                    {msg.text}
+                    </div>
 
                 <span className="mt-1 px-1 text-[10px] text-[#8A958D]">
                   {msg.time}

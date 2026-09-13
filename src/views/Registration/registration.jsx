@@ -156,6 +156,34 @@ const Registration = () => {
 
 
   return (
+    <>
+      <style>
+        {`
+          @keyframes skillBridgeLogoIn {
+            from {
+              opacity: 0;
+              transform: translateX(-35px) scale(0.96);
+            }
+
+            to {
+              opacity: 1;
+              transform: translateX(0) scale(1);
+            }
+          }
+
+          @keyframes skillBridgeTaglineIn {
+            from {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
     <div className="min-h-screen bg-[#F7F8F5]">
 
       <div className="flex min-h-screen flex-col lg:flex-row">
@@ -172,11 +200,32 @@ const Registration = () => {
 
         <div className="relative z-10 flex max-w-xl flex-col items-center text-center">
 
-            {/* Logo Placeholder */}
+            {/* Logo */}
 
-            <div className="mb-8 flex h-75 w-95 items-center justify-center rounded-3xl text-base font-semibold tracking-wide backdrop-blur-sm sm:h-66 sm:w-100">
-              <img src={logo} alt="SkillBridge Logo" className="h-full w-full object-contain"/>
+            <div className="mb-5 flex h-75 w-95 items-center justify-center rounded-3xl text-base font-semibold tracking-wide backdrop-blur-sm sm:h-66 sm:w-100">
+              <img
+                src={logo}
+                alt="SkillBridge Logo"
+                className="h-full w-full object-contain"
+                style={{
+                  // skillBridgeLogoIn animation chalao, 4 seconds tak chalao, speed start mein fast aur end mein slow rakho, aur animation complete hone ke baad final state ko maintain rakho.
+                  animation: "skillBridgeLogoIn 5s ease-in-out forwards",
+                }}
+              />
             </div>
+
+
+            {/* Tagline */}
+
+            <p
+              className="mb-5 text-lg font-semibold tracking-wide text-white sm:text-xl"
+              style={{
+                opacity: 0,
+                animation: "skillBridgeTaglineIn 2.5s ease-out 0.8s forwards",
+              }}
+            >
+              Exchange. Learn. Grow.
+            </p>
 
 
             {/* Small Divider */}
@@ -187,11 +236,13 @@ const Registration = () => {
             {/* Description */}
 
             <p className="w-full max-w-[340px] px-2 text-center text-sm leading-7 text-white/80 sm:max-w-sm sm:px-0 sm:text-base">
-            Exchange your skills, learn from others, and grow together.
-            Connect with people who can teach what you want to learn while
-            sharing what you already know.
+              Exchange your skills, learn from others, and grow together.
+              Connect with people who can teach what you want to learn while
+              sharing what you already know.
             </p>
 
+
+            {/* Feature */}
 
             {/* Feature */}
 
@@ -428,6 +479,7 @@ const Registration = () => {
       </div>
 
     </div>
+    </>
   )
 }
 
