@@ -83,6 +83,16 @@ const Chat = () => {
     )
   }
 
+  const deleteMessage = (messageId) => {
+
+    setMessages((prevMessages) =>
+      prevMessages.filter(
+        (msg) => msg.id !== messageId
+      )
+    )
+  
+  }
+
   const sendMessage = (e) => {
 
     e.preventDefault()
@@ -187,14 +197,25 @@ const Chat = () => {
 
             <div
               key={msg.id}
-              className={`flex ${
+              className={`flex item-center gap-2 ${
                 msg.sender === "me"
                   ? "justify-end"
                   : "justify-start"
               }`}
             >
 
-              <div
+            {msg.sender === "me" && (
+                <button
+                type="button"
+                onClick={() => deleteMessage(msg.id)}
+                className="h-fit self-center px-2 py-0.5 rounded text-[10px] font-medium text-white bg-red-500 transition border border-red-400 hover:scale-105"
+                >
+                Delete
+                </button>
+            )}
+
+            <div
+              
                 className={`max-w-[80%] sm:max-w-[65%] ${
                   msg.sender === "me"
                     ? "items-end"
