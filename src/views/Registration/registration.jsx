@@ -236,6 +236,21 @@ const Registration = () => {
             font-weight: 700;
             animation: skillBridgeTickDraw 2.8s ease-in-out infinite;
           }
+
+          @keyframes skillBridgeDividerBlink {
+            0%,
+            100% {
+              opacity: 0.3;
+            }
+
+            50% {
+              opacity: 1;
+            }
+          }
+
+          .skillBridgeDivider {
+            animation: skillBridgeDividerBlink 2s ease-in-out infinite;
+          }
         `}
       </style>
     <div className="min-h-screen bg-[#F7F8F5]">
@@ -284,7 +299,7 @@ const Registration = () => {
 
             {/* Small Divider */}
 
-            <div className="mb-3 h-1 w-16 rounded-full bg-white/60" />
+            <div className="skillBridgeDivider mb-3 h-1 w-16 rounded-full bg-white/60" />
 
 
             {/* Description */}
