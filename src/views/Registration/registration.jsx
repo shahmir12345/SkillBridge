@@ -182,6 +182,40 @@ const Registration = () => {
               transform: translateY(0);
             }
           }
+            
+          @keyframes skillBridgeTickDraw {
+            0% {
+              opacity: 0;
+              clip-path: inset(0 100% 0 0);
+            }
+
+            20% {
+              opacity: 1;
+              clip-path: inset(0 100% 0 0);
+            }
+
+            55% {
+              opacity: 1;
+              clip-path: inset(0 0 0 0);
+            }
+
+            75% {
+              opacity: 1;
+              clip-path: inset(0 0 0 0);
+            }
+
+            100% {
+              opacity: 0;
+              clip-path: inset(0 0 0 100%);
+            }
+          }
+
+          .skillBridgeTick {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 700;
+            animation: skillBridgeTickDraw 2.8s ease-in-out infinite;
+          }
         `}
       </style>
     <div className="min-h-screen bg-[#F7F8F5]">
@@ -248,8 +282,8 @@ const Registration = () => {
 
             <div className="mt-10 flex items-center gap-3 rounded-full border border-white/10 bg-white/10 px-5 py-3 backdrop-blur-sm">
 
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-sm">
-                ✓
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15">
+                  <span className="skillBridgeTick">✓</span>
             </div>
 
             <p className="text-sm font-medium text-white/90">
