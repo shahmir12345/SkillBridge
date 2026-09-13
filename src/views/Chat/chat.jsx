@@ -197,7 +197,7 @@ const Chat = () => {
 
             <div
               key={msg.id}
-              className={`flex item-center gap-2 ${
+              className={`flex items-center gap-2 ${
                 msg.sender === "me"
                   ? "justify-end"
                   : "justify-start"
@@ -216,7 +216,7 @@ const Chat = () => {
 
             <div
               
-                className={`max-w-[80%] sm:max-w-[65%] ${
+                className={`max-w-[80%] break-words sm:max-w-[65%] ${
                   msg.sender === "me"
                     ? "items-end"
                     : "items-start"
@@ -224,7 +224,7 @@ const Chat = () => {
               >
 
                 <div
-                  className={`rounded-2xl px-4 py-3 text-sm leading-6 shadow-sm ${
+                  className={`max-w-full break-words whitespace-normal rounded-2xl px-4 py-3 text-sm leading-6 shadow-sm ${
                     msg.sender === "me"
                       ? "rounded-br-md bg-[#1F6F5C] text-white"
                       : "rounded-bl-md border border-[#D9DFD3] bg-white text-[#16241F]"
