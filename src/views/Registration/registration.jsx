@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import logo from "./logo.png"
@@ -17,6 +17,26 @@ const Registration = () => {
   // Error and success messages
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
+  const description = "Exchange your skills, learn from others, and grow together. Connect with people who can teach what you want to learn while sharing what you already know."
+
+  const [typedDescription, setTypedDescription] = useState("")
+
+  // Yahan useEffect sirf upar wali ek baar ki line hai.
+  // Uske andar jo setInterval create hua hai, woh continuously apna callback execute kar raha hai.
+  useEffect(() => {
+    let index = 0
+  
+    const typingInterval = setInterval(() => {
+      setTypedDescription(description.slice(0, index + 1))
+      index++
+  
+      if (index === description.length) {
+        clearInterval(typingInterval)
+      }
+    }, 45)
+  
+    return () => clearInterval(typingInterval)
+  }, [])
 
 
   const handleSubmit = (e) => {
@@ -182,7 +202,7 @@ const Registration = () => {
               transform: translateY(0);
             }
           }
-            
+
           @keyframes skillBridgeTickDraw {
             0% {
               opacity: 0;
@@ -270,9 +290,7 @@ const Registration = () => {
             {/* Description */}
 
             <p className="w-full max-w-[340px] px-2 text-center text-sm leading-7 text-white/80 sm:max-w-sm sm:px-0 sm:text-base">
-              Exchange your skills, learn from others, and grow together.
-              Connect with people who can teach what you want to learn while
-              sharing what you already know.
+              {typedDescription}
             </p>
 
 
