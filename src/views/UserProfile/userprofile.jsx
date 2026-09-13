@@ -280,13 +280,27 @@ return ( <main className="min-h-screen bg-[#F7F8F5] px-4 py-8 text-[#16241F] sm:
               </div>
 
 
-              <button
-                type="button"
-                onClick={() => navigate(`/request/${user.id}`)}
-                className="shrink-0 rounded-xl bg-[#E2982F] px-6 py-3 text-sm font-semibold text-[#153F35] shadow-sm transition hover:bg-[#F0AC4D] hover:shadow-md"
-              >
-                Request Swap →
-              </button>
+              <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+
+              {/* Chat Button */}
+                <button
+                  type="button"
+                  onClick={() => navigate(`/chat/${user.id}`)}
+                  className="rounded-xl border border-[#8FD0BC] bg-transparent px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1F6F5C]"
+                >
+                  💬 Message
+                </button>
+
+                {/* Request Swap Button */}
+                <button
+                  type="button"
+                  onClick={() => navigate(`/request/${user.id}`)}
+                  className="rounded-xl bg-[#E2982F] px-6 py-3 text-sm font-semibold text-[#153F35] shadow-sm transition hover:bg-[#F0AC4D] hover:shadow-md"
+                >
+                  Request Swap →
+                </button>
+
+              </div>
 
             </div>
 
